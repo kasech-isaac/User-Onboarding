@@ -10,17 +10,19 @@ const fromSchema = yup.object().shape({
     .email("Must be valide email adress")
     .required("Email is required"),
     Password: yup.string().required("required"),
+    edication: yup.string().required("required"),
   term: yup.boolean().oneOf([true], "please agree to term and condition")
 });
 
 
 export default function Form() {
-  
+
 // **** form state ****
     const [forms, setForms] = useState({
         name: "",
         email: "",
         password: "",
+        edication:"",
         term: false
       });
    
@@ -29,6 +31,7 @@ export default function Form() {
         name: "",
         email: "",
         password: "",
+        edication:"",
         term: ""
       });
 
@@ -114,6 +117,22 @@ export default function Form() {
         : null}
       </label>
 
+<label htmlFor="edication">
+      Edication
+  <select 
+         name="edication"
+          id="edication"
+          onChange={inputChange}
+          >
+          <option value="">--What is your highst edication--</option>
+          <option value="GED">GED</option>
+          <option value="HighSchool Diploma">HighSchool Diploma</option>
+          <option value="Some Collage">Collage</option>    
+         </select>
+         {errorState.edication.length > 0 ? <p className="error">{errorState.edication}</p>
+        : null}
+        </label>
+     
       <label htmlFor="term">
         <input
           type="checkbox"
