@@ -55,7 +55,7 @@ export default function Form() {
         }
 
 // **** onsubmit ****
-      const formSubmit = e => {
+      const thOnSubmit = e => {
         e.preventDefault();
        
         axios
@@ -64,7 +64,7 @@ export default function Form() {
         .catch(err => console.log(err));
       };
 // **** onchange ****
-      const inputChange = e => {
+      const theOnChange = e => {
         e.persist();
         if (e.target.name === "email") {
             validate(e);
@@ -75,7 +75,7 @@ export default function Form() {
       };
 // **** form  ****
       return(
-        <form className="form" onSubmit={formSubmit}>
+        <form className="form" onSubmit={thOnSubmit}>
               <label htmlFor="name">
         Name:
         <input
@@ -84,7 +84,7 @@ export default function Form() {
           id="name"
           placeholder="Name"
           value={forms.name}
-          onChange={inputChange}
+          onChange={theOnChange}
         />
          {errorState.name.length > 0 ? <p className='error'>{errorState.name}</p> : null}
       </label>
@@ -97,7 +97,7 @@ export default function Form() {
           id="email"
           placeholder="email"
           value={forms.email}
-          onChange={inputChange}
+          onChange={theOnChange }
         />
         {errorState.email.length > 0 ? <p className="error">{errorState.email}</p>
         : null}
@@ -111,18 +111,18 @@ export default function Form() {
           id="password"
           placeholder="Password"
           value={forms.password}
-          onChange={inputChange}
+          onChange={theOnChange }
         />
          {errorState.password.length > 0 ? <p className="error">{errorState.password}</p>
         : null}
       </label>
 
 <label htmlFor="edication">
-      Edication
+      Edication:
   <select 
          name="edication"
           id="edication"
-          onChange={inputChange}
+          onChange={theOnChange }
           >
           <option value="">--What is your highst edication--</option>
           <option value="GED">GED</option>
@@ -139,7 +139,7 @@ export default function Form() {
           id="term"
           name="term"
           checked={forms.term}
-          onChange={inputChange}
+          onChange={theOnChange}
         />
         Terms & Service
       </label>
